@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Datacenter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legend {
+            display: none; /* Oculto por padrão */
+            margin-top: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        .legend-item span {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="before-grid-container">
+        <h1>Mapa Datacenter</h1>
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="tomadasCheckbox" onclick="toggleLegend()"> Tomadas
+            </label>
+        </div>
+    </div>
+    
+    <div class="map-grid" id="mapGrid">
+        <img src="data_center.png" alt="Mapa Datacenter" class="map-background">
+    </div>
+
+    <div id="positionDisplay" style="display: none; position: fixed; bottom: 10px; right: 10px; background-color: white; padding: 5px; border: 1px solid black;">
+        <span id="positionText"></span>
+    </div>
+
+    <!-- Adicionando a legenda -->
+    <div class="legend" id="legend">
+        <div class="legend-item">
+            <span style="background-color: rgba(0, 255, 0, 0.8); width: 20px; height: 20px; display: inline-block;"></span> Disponível
+        </div>
+        <div class="legend-item">
+            <span style="background-color: rgba(255, 0, 0, 0.8); width: 20px; height: 20px; display: inline-block;"></span> Não disponível
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/konva@8/konva.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Função para exibir ou ocultar a legenda com base no estado do checkbox
+        function toggleLegend() {
+            const checkbox = document.getElementById('tomadasCheckbox');
+            const legend = document.getElementById('legend');
+            if (checkbox.checked) {
+                legend.style.display = 'block';  // Exibe a legenda
+            } else {
+                legend.style.display = 'none';   // Oculta a legenda
+            }
+        }
+    </script>
+</body>
+</html>
+
